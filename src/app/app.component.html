@@ -1,7 +1,39 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
+  <h1>Welcome to {{ title + '!' }}!</h1>
+  <hr>
+
+  <!-- sugar syntax -- using expressions {{}} -->
+  <h1 class="heading">Interpolation</h1>
+  <h1> Salary : {{ hours * pay }} </h1>
+  <h1> Recieved Amount: {{credited ? 'Yes' : 'No' }}</h1>
+  <hr>
+
+  <h1 class="heading">Property Binding</h1>  
+  <img [src]="image">
+  <hr>
+  
+  <h1 class="heading">Event Binding</h1>  
+  <div>
+    <button (click) = "changeName()">changeName</button>
+     <input [value]="name" (input)="handleInput($event)">
+     {{name}}
+  </div>
+  <hr>
+
+  <h1 class="heading">Two-way Binding</h1>  
+  <div>
+    <button (click) = "changeName()">changeName</button>
+     <input [(ngModel)]="name">
+     {{name}}
+  </div>
+  <hr>
+
+  <h1 class="heading">Local Reference</h1>  
+  <div>
+    <button (click) = "getName(username.value)">Get value</button>
+     <input type='text' #username> {{getValue}}
+  </div>
+  <hr>
 </div>
 
