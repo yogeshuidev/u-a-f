@@ -2,7 +2,13 @@
   <app-passenger-count 
     [items]='passengers'>
   </app-passenger-count>
-
+  <hr>
+  <div> Container/Smart component passenger names::
+    <div *ngFor="let passenger of passengers">
+        {{passenger.fullname}}
+    </div>
+  </div>
+  <hr>
   <app-passenger-detail 
     *ngFor="let passenger of passengers" 
     [detail] = "passenger"
