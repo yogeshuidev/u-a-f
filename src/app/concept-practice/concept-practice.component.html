@@ -1,0 +1,138 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>Welcome to {{ title + '!' }}!</h1>
+  <hr>
+
+  <!-- sugar syntax -- using expressions {{}} -->
+  <h1 class="heading">Interpolation</h1>
+  <h1> Salary : {{ hours * pay }} </h1>
+  <h1> Recieved Amount: {{credited ? 'Yes' : 'No' }}</h1>
+  <hr>
+
+  <h1 class="heading">Property Binding</h1>  
+  <img [src]="image">
+  <hr>
+  
+  <h1 class="heading">Event Binding</h1>  
+  <div>
+    <button (click) = "changeName()">changeName</button>
+     <input [value]="name" (input)="handleInput($event)">
+     {{name}}
+  </div>
+  <hr>
+
+  <h1 class="heading">Two-way Binding</h1>  
+  <div>
+    <button (click) = "changeName()">changeName</button>
+     <input [(ngModel)]="name">
+     {{name}}
+  </div>
+  <hr>
+
+  <h1 class="heading">Local Reference</h1>  
+  <div>
+    <button (click) = "getName(username.value)">Get value</button>
+     <input type='text' #username> {{getValue}}
+  </div>
+  <hr>
+
+  <h1 class="heading">ngIf</h1>  
+  <div>
+     <input [(ngModel)]="name">
+
+     <!-- web componets -->
+     <ng-template [ngIf]="name.length>8">
+      <div> Serching ... {{name}}</div>
+     </ng-template>
+
+     <!-- *ngIf sugar syntax -->
+     <div *ngIf="name.length>8"> Serching ... {{name}}</div>
+  </div>
+  <hr>
+
+  <h1 class="heading">ngFor</h1>  
+  <div>
+      <h3>Airline Passengers</h3>
+      <ul>
+          <li *ngFor = "let passenger of passengers; let i = index">
+            {{ i }} : {{ passenger.fullname }}
+          </li>
+      </ul>
+  </div>
+  <hr>
+
+  <h1 class="heading">ngClass</h1>  
+  <div>
+      <h3>Airline Passengers</h3>
+      <ul>
+          <li *ngFor = "let passenger of passengers; let i = index">
+            <span class="status" [ngClass]= "{'checked-in': passenger.checkedIn }"></span>
+            {{ i }} : {{ passenger.fullname }}
+          </li>
+      </ul>
+  </div>
+  <div>
+      <h3>Airline Passengers</h3>
+      <ul>
+          <li *ngFor = "let passenger of passengers; let i = index">
+            <span class="status" [class.checked-in]= "passenger.checkedIn "></span>
+            {{ i }} : {{ passenger.fullname }}
+          </li>
+      </ul>
+  </div>
+  <hr>
+
+  <h1 class="heading">ngStyle</h1>  
+  <div>
+      <h3>Airline Passengers</h3>
+      <ul>
+          <li *ngFor = "let passenger of passengers; let i = index">
+            <span class="status" [ngStyle]= "{backgroundColor: (passenger.checkedIn ? '#2ecc71' : '#c0392b')}"></span>
+            {{ i }} : {{ passenger.fullname }}
+          </li>
+      </ul>
+  </div>
+  <div>
+      <h3>Airline Passengers</h3>
+      <ul>
+          <li *ngFor = "let passenger of passengers; let i = index">
+            <span class="status" [style.backgroundColor]= "(passenger.checkedIn ? '#2ecc71' : '#c0392b')"></span>
+            {{ i }} : {{ passenger.fullname }}
+          </li>
+      </ul>
+  </div>
+  <hr>
+
+  <h1 class="heading">Pipes</h1>  
+  <div>
+      <h3>Airline Passengers</h3>
+      <ul>
+          <li *ngFor = "let passenger of passengers; let i = index">
+              <span class="status" [ngClass]= "{'checked-in': passenger.checkedIn }"></span>
+            {{ i }} : {{ passenger.fullname }}
+            <div class="date"> checked-in date:
+                {{ passenger.checkInDate ? (passenger.checkInDate | date: 'yMMMMd' | uppercase) : 'Not checked in' }}
+              </div>
+          </li>
+      </ul>
+  </div>
+  <hr>
+
+  <h1 class="heading">Safe Navigation</h1>  
+  <div>
+      <h3>Airline Passengers</h3>
+      <ul>
+          <li *ngFor = "let passenger of passengers; let i = index">
+              <span class="status" [ngClass]= "{'checked-in': passenger.checkedIn }"></span>
+            {{ i }} : {{ passenger.fullname }}
+            <div class="date"> checked-in date:
+                {{ passenger.checkInDate ? (passenger.checkInDate | date: 'yMMMMd' | uppercase) : 'Not checked in' }}
+            </div>
+            <div class="children">
+                Children: {{ passenger.children?.length || 0 }}
+            </div>
+          </li>
+      </ul>
+  </div>
+</div>
+
