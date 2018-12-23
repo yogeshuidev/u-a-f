@@ -1,5 +1,7 @@
 <div>
   <h3>Airline Passengers</h3>
+  <app-passenger-count></app-passenger-count>
+  <app-passenger-detail></app-passenger-detail>
   <ul>
       <li *ngFor = "let passenger of passengers; let i = index">
           <span class="status" [ngClass]= "{'checked-in': passenger.checkedIn }"></span>
